@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="logoBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#06080e"/>
+    </linearGradient>
+    <linearGradient id="logoBoltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="logoTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Icon Container (Left) -->
+  <g transform="translate(10, 8)">
+    <rect x="0" y="0" width="112" height="112" rx="26" fill="url(#logoBgGrad)" stroke="#6366f1" stroke-width="2.5"/>
+    <path d="M28 36L48 56L28 76" stroke="#818cf8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M68 22L46 60H64L56 90L86 50H66L76 22H68Z" fill="url(#logoBoltGrad)" filter="url(#logoGlow)"/>
+  </g>
+
+  <!-- Typography (Right) -->
+  <g transform="translate(142, 74)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="44" fill="url(#logoTextGrad)" letter-spacing="-1">OhMy<tspan fill="#818cf8">Skills</tspan></text>
+  </g>
+
+  <!-- Tagline Badge -->
+  <g transform="translate(144, 98)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="13" fill="#64748b" letter-spacing="0.5">THE UNIFIED AI SKILLS &amp; RULES HUB</text>
+  </g>
+</svg>

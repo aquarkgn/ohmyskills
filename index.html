@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OhMySkills ⚡ Turn Your Computer into an AI Magic Box • Leave Everything To Me</title>
+  <meta name="description" content="100% Local & Private, Forever Free AI Skill & Cursor Rules Hub. Automatic scanning, health check, recent tracking, and 1-click auto-fix. So easy even a 10-year-old child can master it like LEGO!">
+  
+  <!-- Remote Favicons & Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="OhMySkills ⚡ Turn Your Computer into an AI Magic Box • Leave Everything To Me">
+  <meta property="og:description" content="100% Free local execution. Auto-scan, health audit, recent tracking, and dynamic meta-routing without context bloat.">
+  <meta property="og:image" content="/logo.svg">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS & Lucide Icons CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+  <!-- i18n Engine (Loaded First) -->
+  <script src="i18n.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca'
+            },
+            dark: {
+              950: '#07090e',
+              900: '#0c101b',
+              850: '#111728',
+              800: '#182035',
+              700: '#23304d'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Menlo', 'Monaco', 'Courier New', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Cruip Stellar Ambient Mesh Grid */
+    .bg-stellar-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+    .glow-stellar {
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.16) 0%, rgba(7, 9, 14, 0) 70%);
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0c101b; }
+    ::-webkit-scrollbar-thumb { background: #23304d; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4f46e5; }
+  </style>
+</head>
+
+<body class="bg-dark-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-white">
+
+  <!-- Ambient Glow -->
+  <div class="fixed inset-0 glow-stellar pointer-events-none z-0"></div>
+  <div class="fixed inset-0 bg-stellar-grid pointer-events-none z-0 opacity-70"></div>
+
+  <!-- Header -->
+  <header class="relative z-30 border-b border-dark-800/80 bg-dark-950/85 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center space-x-3 group">
+        <img src="/favicon.svg" alt="OhMySkills Logo" class="w-9 h-9 rounded-xl shadow-lg shadow-brand-500/20 object-contain group-hover:scale-105 transition">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-extrabold tracking-tight text-white text-base sm:text-lg">OhMySkills</span>
+            <span data-i18n="brand.badge" class="px-2 py-0.5 text-[10px] font-mono font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">100% Free & Open-Source</span>
+          </div>
+          <p data-i18n="brand.tagline" class="text-[11px] text-slate-400 hidden sm:block">Private AI Skill Hub • LEGO-Simple for Everyone</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center space-x-6 text-xs text-slate-300 font-medium">
+        <a href="#features" data-i18n="nav.features" class="hover:text-white transition">Features</a>
+        <a href="#workbench" data-i18n="nav.workbench" class="hover:text-white transition">Workbench</a>
+        <a href="#explore-registries" data-i18n="nav.registries" class="hover:text-white transition">Skill Supermarket</a>
+        <a href="#download" data-i18n="nav.download" class="hover:text-white transition">Local CLI</a>
+        <a href="#story" data-i18n="nav.story" class="hover:text-white transition">How It Works</a>
+        <a href="/changelog/" class="hover:text-white transition flex items-center space-x-1">
+          <span data-i18n="nav.changelog">Changelog</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
+        </a>
+      </nav>
+
+      <!-- Action Nav & Language Switcher -->
+      <div class="flex items-center space-x-3">
+        
+        <!-- Language Switcher (EN default) -->
+        <div class="flex items-center space-x-1 bg-dark-900 border border-dark-700/80 rounded-lg p-0.5 text-[11px] font-mono">
+          <button id="lang-toggle-en" onclick="I18n.setLanguage('en')" class="px-2 py-0.5 rounded text-white bg-brand-600 font-bold shadow-sm transition">EN</button>
+          <button id="lang-toggle-zh" onclick="I18n.setLanguage('zh')" class="px-2 py-0.5 rounded text-slate-400 hover:text-slate-200 transition">中文</button>
+        </div>
+
+        <button onclick="loadDemoSkills()" class="px-3.5 py-1.5 text-xs font-bold rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-500/20 transition flex items-center space-x-1.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span data-i18n="nav.btn_demo">Try 1-Click Magic Demo</span>
+        </button>
+
+        <a href="#download" class="hidden sm:flex px-3 py-1.5 text-xs font-medium rounded-lg bg-dark-900 hover:bg-dark-850 text-slate-200 border border-dark-700 transition items-center space-x-1.5">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span data-i18n="nav.btn_download">Download CLI</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="relative z-10 flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24">
+
+    <!-- HERO SECTION (Cruip Stellar Style - High Converting) -->
+    <section class="text-center space-y-6 max-w-4xl mx-auto pt-4">
+      
+      <!-- Safe & Free Badge -->
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-semibold shadow-inner">
+        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+        <span data-i18n="hero.badge_private">100% Local & Private</span>
+        <span class="text-slate-500">•</span>
+        <span data-i18n="hero.badge_free">Forever Free</span>
+        <span class="text-slate-500">•</span>
+        <span data-i18n="hero.badge_zero_config">Zero Code • Novice Friendly</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        <span data-i18n="hero.title_part1">Turn Your Computer into an AI Magic Box.</span><br />
+        <span data-i18n="hero.title_gradient" class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-indigo-300 to-cyan-300">
+          Leave Everything To Me.
+        </span>
+      </h1>
+
+      <!-- Plain Subhead -->
+      <p data-i18n="hero.subtitle" class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        From Excel wizards and weekly reports to study notes and code writing—zero tech jargon required! Automatically scans all AI skills on your machine, auto-declutters, remembers your favorites, and fixes outdated rules. As easy as playing with LEGO blocks.
+      </p>
+
+      <!-- Easy Quick Action Entrance -->
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <button onclick="loadDemoSkills()" class="px-6 py-3 text-sm font-bold rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white shadow-xl shadow-brand-500/25 transition flex items-center space-x-2">
+          <i data-lucide="zap" class="w-4 h-4"></i>
+          <span data-i18n="hero.cta_demo">Try 1-Click Magic Demo (Instant Health Check)</span>
+        </button>
+
+        <a href="#workbench" class="px-5 py-3 text-sm font-semibold rounded-xl bg-dark-900 hover:bg-dark-850 text-slate-200 border border-dark-700 hover:border-brand-500/50 transition flex items-center space-x-2">
+          <i data-lucide="folder-search" class="w-4 h-4 text-brand-400"></i>
+          <span data-i18n="hero.cta_drag">Drop Local Folder to Scan</span>
+        </a>
+      </div>
+
+      <!-- Fast Terminal Copy Box -->
+      <div class="max-w-xl mx-auto mt-6 bg-dark-900/90 border border-dark-700/80 rounded-2xl shadow-2xl overflow-hidden text-left">
+        <div class="bg-dark-950 px-4 py-2 border-b border-dark-800 flex items-center justify-between text-xs">
+          <div class="flex items-center space-x-2 text-slate-400">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+            <span data-i18n="hero.terminal_title" class="text-[11px] font-mono ml-2">Install in local terminal with 1 command</span>
+          </div>
+          <span class="text-[10px] font-mono text-emerald-400">macOS / Linux / WSL</span>
+        </div>
+        <div class="p-3.5 flex items-center justify-between font-mono text-xs text-slate-200">
+          <div class="flex items-center space-x-2 truncate">
+            <span class="text-brand-400 select-none">$</span>
+            <span id="install-command-text" class="text-slate-100 truncate">curl -fsSL https://ohmyskills.dev/install.sh | bash</span>
+          </div>
+          <button onclick="copyInstallCommand()" class="px-2.5 py-1 rounded bg-dark-800 hover:bg-dark-700 text-brand-300 hover:text-white transition flex items-center space-x-1 text-[11px] flex-shrink-0 ml-2">
+            <i id="copy-install-icon" data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span id="copy-install-label" data-i18n="hero.copy">Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Supported Editor Logos Bar -->
+      <div class="pt-6 border-t border-dark-800/60 max-w-2xl mx-auto">
+        <p data-i18n="hero.editors_bar_title" class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-3">INSTANT RETRIEVAL FOR ALL POPULAR AI EDITORS &amp; CLIENTS</p>
+        <div class="flex flex-wrap items-center justify-center gap-3" id="hero-editors-bar"></div>
+      </div>
+
+    </section>
+
+    <!-- SECTION: 3 CORE BENTO HIGHLIGHTS -->
+    <section id="features" class="space-y-10 border-t border-dark-800/80 pt-16">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span data-i18n="features.kicker" class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-brand-500/20 text-brand-300 font-semibold uppercase">Zero-Friction Magic</span>
+        <h2 data-i18n="features.title" class="text-2xl sm:text-3xl font-extrabold text-white">How Even a 10-Year-Old Boy Masters AI Skills</h2>
+        <p data-i18n="features.subtitle" class="text-xs sm:text-sm text-slate-400">No scary black terminals, no confusing setups. Just drop your files in and let your silent magic butler take care of everything.</p>
+      </div>
+
+      <!-- Bento 3-Columns Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Bento 1: 100% Private -->
+        <div class="bg-dark-900 border border-dark-800 hover:border-brand-500/40 rounded-2xl p-6 space-y-4 shadow-sm hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <i data-lucide="lock" class="w-6 h-6"></i>
+          </div>
+          <h3 data-i18n="features.card1_title" class="font-bold text-white text-base">100% Local &amp; Safe: Your Secret Treehouse</h3>
+          <p data-i18n="features.card1_desc" class="text-xs text-slate-400 leading-relaxed">
+            Runs entirely inside your browser memory and local machine. Even if you unplug the Wi-Fi cable, everything works smoothly. Your private work, notes, and sensitive prompts never leave your computer.
+          </p>
+          <div class="pt-2 text-[11px] font-mono text-emerald-400 flex items-center space-x-1">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            <span data-i18n="features.card1_badge">No Sign-up • Zero Network Upload • Forever Free</span>
+          </div>
+        </div>
+
+        <!-- Bento 2: Zero Barrier Auto-Fix -->
+        <div class="bg-dark-900 border border-dark-800 hover:border-brand-500/40 rounded-2xl p-6 space-y-4 shadow-sm hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+            <i data-lucide="wand-2" class="w-6 h-6"></i>
+          </div>
+          <h3 data-i18n="features.card2_title" class="font-bold text-white text-base">Magic Butler: Auto-Scan &amp; 1-Click Auto-Fix</h3>
+          <p data-i18n="features.card2_desc" class="text-xs text-slate-400 leading-relaxed">
+            Scattered rules across Cursor, Claude, or VSCode? The engine automatically scans, untangles duplicate toys, and updates broken framework rules (Next.js 15, Tailwind v4, React 19) in 1 click.
+          </p>
+          <div class="pt-2 text-[11px] font-mono text-brand-300 flex items-center space-x-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span data-i18n="features.card2_badge">Health score skyrockets from F to A+ in 1s</span>
+          </div>
+        </div>
+
+        <!-- Bento 3: Universal Search -->
+        <div class="bg-dark-900 border border-dark-800 hover:border-brand-500/40 rounded-2xl p-6 space-y-4 shadow-sm hover:shadow-lg transition">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          </div>
+          <h3 data-i18n="features.card3_title" class="font-bold text-white text-base">Free Toy Store: Search &amp; Install in 1 Click</h3>
+          <p data-i18n="features.card3_desc" class="text-xs text-slate-400 leading-relaxed">
+            Need an Excel wizard, weekly report polisher, or study summarizer? Search through thousands of curated open-source skills from skills.sh, cursor.directory, and awesome-cursorrules with 1-click install.
+          </p>
+          <div class="pt-2 text-[11px] font-mono text-cyan-300 flex items-center space-x-1">
+            <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            <span data-i18n="features.card3_badge">Instant search • Official community verified</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: AUTO-PILOT WORKBENCH -->
+    <section id="workbench" class="space-y-8 border-t border-dark-800/80 pt-16">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span data-i18n="workbench.kicker" class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold uppercase">Auto-Pilot Workbench</span>
+        <h2 data-i18n="workbench.title" class="text-2xl sm:text-3xl font-extrabold text-white">Zero-Touch Skill Workbench</h2>
+        <p data-i18n="workbench.subtitle" class="text-xs sm:text-sm text-slate-400">Drop your local rule directory or click load demo to experience automated diagnosis, recent tracking, and optimization.</p>
+      </div>
+
+      <!-- Drag & Drop Zone -->
+      <div id="drop-zone" class="relative group max-w-3xl mx-auto border-2 border-dashed border-dark-700 hover:border-brand-500/70 rounded-2xl p-8 bg-dark-900/60 backdrop-blur-md transition-all duration-200 cursor-pointer text-center space-y-4 shadow-xl">
+        <input type="file" id="file-input-folder" webkitdirectory directory multiple class="hidden" onchange="handleFileInput(event)">
+        <input type="file" id="file-input-files" multiple accept=".md,.mdc,.txt,.yaml,.yml" class="hidden" onchange="handleFileInput(event)">
+
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-400 group-hover:scale-105 transition">
+          <i data-lucide="folder-up" class="w-7 h-7"></i>
+        </div>
+
+        <div>
+          <p data-i18n="workbench.drop_title" class="text-sm font-semibold text-white">
+            Drag & drop your local project or <span class="text-brand-300 font-mono">.cursor/rules/</span> folder here
+          </p>
+          <p class="text-xs text-slate-400 mt-1">
+            <span data-i18n="workbench.drop_sub_prefix">or</span>
+            <button type="button" onclick="document.getElementById('file-input-folder').click()" class="text-brand-400 underline hover:text-brand-300 font-medium" data-i18n="workbench.drop_choose_folder">Select Local Folder</button>
+            <span data-i18n="workbench.drop_sub_mid">or</span>
+            <button type="button" onclick="document.getElementById('file-input-files').click()" class="text-brand-400 underline hover:text-brand-300 font-medium" data-i18n="workbench.drop_pick_files">Pick Rule Files</button>
+          </p>
+        </div>
+
+        <div class="flex items-center justify-center space-x-3 pt-2">
+          <button type="button" onclick="loadDemoSkills()" class="px-5 py-2.5 text-xs font-bold rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-500/20 transition flex items-center space-x-1.5">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span data-i18n="workbench.drop_btn_demo">Load 10 Production-Grade Demo Skills (Office, Study &amp; Tech)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Workbench HUD & Grid (Hidden until loaded) -->
+      <div id="workbench-section" class="space-y-6 hidden">
+        
+        <!-- Auto-Pilot Mode Announcement Bar -->
+        <div class="p-3.5 rounded-xl bg-gradient-to-r from-brand-900/40 via-dark-900 to-brand-900/40 border border-brand-500/30 flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
+          <div class="flex items-center space-x-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span data-i18n="workbench.autopilot_banner" class="text-slate-200 font-medium">Auto-Pilot Self-Healing Active: When rule conflicts or token bloat are detected, click the button on the right for one-click automatic resolution.</span>
+          </div>
+          <button onclick="triggerAutoFix()" class="px-4 py-1.5 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white shadow transition flex items-center space-x-1 flex-shrink-0">
+            <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+            <span data-i18n="workbench.btn_autofix">Auto-Fix All (One-Click)</span>
+          </button>
+        </div>
+
+        <!-- Bento Diagnostic HUD -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div class="bg-dark-900 border border-dark-800 rounded-xl p-4 flex items-center justify-between shadow-sm">
+            <div>
+              <p data-i18n="workbench.hud_health" class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Health Score</p>
+              <div class="flex items-baseline space-x-2 mt-1">
+                <span id="stat-score" class="text-2xl font-extrabold text-white">--</span>
+                <span id="stat-grade" class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Grade --</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1" id="stat-skills-count-sub">0 skills loaded</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-brand-400"><i data-lucide="activity" class="w-5 h-5"></i></div>
+          </div>
+
+          <div class="bg-dark-900 border border-dark-800 rounded-xl p-4 flex items-center justify-between shadow-sm">
+            <div>
+              <p data-i18n="workbench.hud_tokens" class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Context Token Load</p>
+              <div class="flex items-baseline space-x-1.5 mt-1">
+                <span id="stat-total-tokens" class="text-2xl font-extrabold text-white">0</span>
+                <span class="text-xs text-slate-400 font-mono">tokens</span>
+              </div>
+              <p class="text-[11px] text-amber-400 mt-1" id="stat-always-sub">0 always-on baseline</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-amber-400"><i data-lucide="database" class="w-5 h-5"></i></div>
+          </div>
+
+          <div class="bg-dark-900 border border-dark-800 rounded-xl p-4 flex items-center justify-between shadow-sm">
+            <div>
+              <p data-i18n="workbench.hud_savings" class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Routing Savings</p>
+              <div class="flex items-baseline space-x-1.5 mt-1">
+                <span id="stat-savings-pct" class="text-2xl font-extrabold text-emerald-400">~85%</span>
+                <span data-i18n="workbench.hud_savings_tag" class="text-xs text-emerald-300 font-mono">Token Savings</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1" id="stat-savings-sub-text">Saves ~0 tokens/turn</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-emerald-400"><i data-lucide="zap" class="w-5 h-5"></i></div>
+          </div>
+
+          <div onclick="openDoctorModal()" class="bg-dark-900 border border-dark-800 hover:border-brand-500/50 rounded-xl p-4 flex items-center justify-between cursor-pointer transition shadow-sm group">
+            <div>
+              <p data-i18n="workbench.hud_issues" class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Diagnostic Alerts</p>
+              <div class="flex items-center space-x-2 mt-1">
+                <span id="stat-errors" class="text-xs font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30">0 Errors</span>
+                <span id="stat-warnings" class="text-xs font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">0 Warnings</span>
+              </div>
+              <p data-i18n="workbench.hud_view_details" class="text-[11px] text-brand-400 group-hover:underline mt-1">View diagnosis report →</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-dark-800 group-hover:bg-brand-500/20 text-slate-300 group-hover:text-brand-400 flex items-center justify-center transition"><i data-lucide="shield-alert" class="w-5 h-5"></i></div>
+          </div>
+
+        </div>
+
+        <!-- Master Router Callout Box (The "Done For You" Golden Result) -->
+        <div class="bg-dark-900 border-2 border-brand-500/40 rounded-2xl p-5 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="flex items-center space-x-2">
+              <span data-i18n="workbench.golden_kicker" class="px-2 py-0.5 rounded bg-brand-500/20 text-brand-300 font-mono text-[10px] uppercase font-bold">Auto-Pilot Crown Jewel</span>
+              <h3 data-i18n="workbench.golden_title" class="text-base font-bold text-white">Single Meta-Router System Prompt Compiled &amp; Ready</h3>
+            </div>
+            <p data-i18n="workbench.golden_desc" class="text-xs text-slate-400 leading-relaxed">
+              Zero friction: Instead of juggling dozens of fragmented rule files, copy this single compiled router prompt into Cursor or Claude to unlock on-demand intelligent activation!
+            </p>
+          </div>
+          <button onclick="openRouterModal()" class="px-5 py-2.5 text-xs font-bold rounded-xl bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/30 transition flex items-center space-x-2 flex-shrink-0">
+            <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+            <span data-i18n="workbench.btn_view_router">View &amp; Copy Master Router</span>
+          </button>
+        </div>
+
+        <!-- Recently Used & Favorites Bar (Auto-tracked) -->
+        <div class="p-3 rounded-xl bg-dark-900/80 border border-dark-800 flex flex-wrap items-center justify-between text-xs gap-2">
+          <div class="flex items-center space-x-2 overflow-x-auto py-0.5">
+            <span class="text-amber-400 flex items-center space-x-1 font-semibold flex-shrink-0">
+              <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+              <span data-i18n="workbench.recent_label">⚡ Recently Used &amp; Favorites:</span>
+            </span>
+            <div id="recent-pills" class="flex flex-wrap items-center gap-1.5">
+              <!-- dynamically injected -->
+            </div>
+          </div>
+          <button onclick="clearRecentSkills()" class="text-[11px] text-slate-500 hover:text-slate-300 transition flex-shrink-0">Clear / 清空</button>
+        </div>
+
+        <!-- Action Bar & Controls -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-dark-900/60 border border-dark-800 rounded-xl p-3">
+          
+          <div class="flex flex-wrap items-center gap-2 flex-grow">
+            <div class="relative w-full sm:w-64">
+              <input type="text" id="search-input" oninput="handleSearch(this.value)" data-i18n-placeholder="workbench.search_placeholder" placeholder="Search skills (Excel, weekly report, Next.js, triggers)..." class="w-full bg-dark-950 border border-dark-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-500">
+              <span class="absolute right-2.5 top-1.5 text-xs text-slate-500">⌘K</span>
+            </div>
+            <div id="domain-filters" class="flex flex-wrap gap-1.5 text-xs"></div>
+          </div>
+
+          <div class="flex items-center gap-2 self-end sm:self-auto flex-wrap">
+            <button onclick="saveCurrentAsPreset()" title="Save preset" class="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 border border-dark-700 transition flex items-center space-x-1">
+              <i data-lucide="bookmark-plus" class="w-3.5 h-3.5"></i>
+              <span data-i18n="workbench.btn_preset">Save Preset</span>
+            </button>
+
+            <button onclick="exportStandaloneHtml()" class="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 border border-dark-700 transition flex items-center space-x-1">
+              <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
+              <span data-i18n="workbench.btn_export_html">Export HTML</span>
+            </button>
+
+            <button onclick="exportZipBundle()" class="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 border border-dark-700 transition flex items-center space-x-1">
+              <i data-lucide="archive" class="w-3.5 h-3.5"></i>
+              <span data-i18n="workbench.btn_export_zip">Bundle ZIP</span>
+            </button>
+
+            <button onclick="resetWorkbench()" title="Reset" class="p-1.5 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-dark-800 transition">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Skills Grid -->
+        <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+      </div>
+
+    </section>
+
+    <!-- SECTION: PUBLIC REGISTRIES SEARCH -->
+    <section id="explore-registries" class="border-t border-dark-800/80 pt-16 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span data-i18n="registries.kicker" class="text-[11px] font-mono px-2 py-0.5 rounded bg-brand-500/20 text-brand-300 uppercase font-semibold">Community Supermarket</span>
+            <h2 data-i18n="registries.title" class="text-xl sm:text-2xl font-bold text-white">Instant Global Open-Source Skills Explorer</h2>
+          </div>
+          <p data-i18n="registries.subtitle" class="text-xs text-slate-400 mt-1">Curated rules from skills.sh, cursor.directory, and awesome-cursorrules. Office, writing, study, and coding skills ready to import.</p>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <input type="text" id="registry-search-input" oninput="handleRegistrySearch(this.value)" data-i18n-placeholder="registries.search_placeholder" placeholder="Search global skills (e.g. excel, email, nextjs, docker)..." class="bg-dark-900 border border-dark-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-brand-500 w-64">
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs" id="registry-source-pills"></div>
+      <div id="registry-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- SECTION: DOWNLOAD CLIENT MATRIX -->
+    <section id="download" class="space-y-8 border-t border-dark-800/80 pt-16">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span data-i18n="download.kicker" class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-brand-500/20 text-brand-300 font-semibold uppercase">Local Daemon &amp; CLI</span>
+        <h2 data-i18n="download.title" class="text-2xl sm:text-3xl font-extrabold text-white">Download OhMySkills Local Client</h2>
+        <p data-i18n="download.subtitle" class="text-xs sm:text-sm text-slate-400">Deeply integrated with your local file system. Automatically watches rule directories and syncs across editors in milliseconds.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        
+        <div class="bg-dark-900 border border-dark-800 rounded-2xl p-6 space-y-4 flex flex-col justify-between hover:border-dark-700 transition">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-xl">🍏</div>
+            <h3 data-i18n="download.mac_title" class="font-bold text-white text-base">macOS</h3>
+            <p data-i18n="download.mac_desc" class="text-xs text-slate-400 leading-relaxed">Optimized for Apple Silicon (M1-M4) and Intel x86. Automatically takes over ~/.cursor/rules and ~/.claude directories.</p>
+            <div class="bg-dark-950 p-2.5 rounded-lg font-mono text-xs text-slate-300 border border-dark-800 select-all">
+              brew install ohmyskills
+            </div>
+          </div>
+          <a href="/install.sh" download="install.sh" data-i18n="download.mac_btn" class="w-full py-2 text-center text-xs font-semibold rounded-lg bg-brand-600 hover:bg-brand-500 text-white transition shadow">
+            Download Universal Script
+          </a>
+        </div>
+
+        <div class="bg-dark-900 border border-dark-800 rounded-2xl p-6 space-y-4 flex flex-col justify-between hover:border-dark-700 transition">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-xl">🐧</div>
+            <h3 data-i18n="download.linux_title" class="font-bold text-white text-base">Linux</h3>
+            <p data-i18n="download.linux_desc" class="text-xs text-slate-400 leading-relaxed">Self-contained, dependency-free static binary. Supports Ubuntu, Debian, Arch, Fedora production servers.</p>
+            <div class="bg-dark-950 p-2.5 rounded-lg font-mono text-xs text-slate-300 border border-dark-800 select-all truncate">
+              curl -fsSL https://ohmyskills.dev/install.sh | bash
+            </div>
+          </div>
+          <button onclick="navigator.clipboard.writeText('curl -fsSL https://ohmyskills.dev/install.sh | bash'); alert(I18n.t('hero.copied'));" data-i18n="download.linux_btn" class="w-full py-2 text-center text-xs font-semibold rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 border border-dark-700 transition">
+            Copy Linux Install Command
+          </button>
+        </div>
+
+        <div class="bg-dark-900 border border-dark-800 rounded-2xl p-6 space-y-4 flex flex-col justify-between hover:border-dark-700 transition">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-xl">🪟</div>
+            <h3 data-i18n="download.win_title" class="font-bold text-white text-base">Windows &amp; NPM</h3>
+            <p data-i18n="download.win_desc" class="text-xs text-slate-400 leading-relaxed">Supports Windows PowerShell / WSL2, or install globally via Node.js npm package manager.</p>
+            <div class="bg-dark-950 p-2.5 rounded-lg font-mono text-xs text-slate-300 border border-dark-800 select-all">
+              npm install -g ohmyskills
+            </div>
+          </div>
+          <button onclick="navigator.clipboard.writeText('npm install -g ohmyskills'); alert(I18n.t('hero.copied'));" data-i18n="download.win_btn" class="w-full py-2 text-center text-xs font-semibold rounded-lg bg-dark-800 hover:bg-dark-700 text-slate-200 border border-dark-700 transition">
+            Copy NPM Command
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: KID-FRIENDLY STORY GUIDE (Replaces stiff QA) -->
+    <section id="story" class="space-y-10 border-t border-dark-800/80 pt-16 max-w-5xl mx-auto">
+      <div id="faq" class="text-center space-y-3 max-w-2xl mx-auto">
+        <span data-i18n="story.kicker" class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-brand-500/20 text-brand-300 font-semibold uppercase">Child's Play</span>
+        <h2 data-i18n="story.title" class="text-2xl sm:text-3xl font-extrabold text-white">As Easy as LEGO! How a 10-Year-Old Boy Uses OhMySkills</h2>
+        <p data-i18n="story.subtitle" class="text-xs sm:text-sm text-slate-400">No scary black terminals, no confusing technical settings. Just toss cards into the chest and let your silent magic butler do all the work!</p>
+      </div>
+
+      <!-- 4 Story Cards in 2x2 Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Story 1 -->
+        <div class="bg-dark-900 border border-dark-800 hover:border-brand-500/40 rounded-2xl p-6 space-y-3.5 shadow-sm hover:shadow-lg transition">
+          <div class="flex items-center justify-between">
+            <span class="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-xl">📦</span>
+            <span data-i18n="story.card1_tag" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-dark-800 text-brand-300 border border-dark-700 uppercase">STEP 1: AUTO-SCAN</span>
+          </div>
+          <h3 data-i18n="story.card1_title" class="font-bold text-white text-base">Toss Cards into the Chest (Auto-Scan All Skills)</h3>
+          <p data-i18n="story.card1_desc" class="text-xs text-slate-400 leading-relaxed">
+            Don't know where AI rules are hiding on your computer? Just drag any project folder in. Like magic, every single skill across Cursor, Claude, and VSCode lines up instantly!
+          </p>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="bg-dark-900 border border-dark-800 hover:border-brand-500/40 rounded-2xl p-6 space-y-3.5 shadow-sm hover:shadow-lg transition">
+          <div class="flex items-center justify-between">
+            <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-xl">🧹</span>
+            <span data-i18n="story.card2_tag" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-dark-800 text-emerald-300 border border-dark-700 uppercase">STEP 2: AUTO-HEALTH &amp; FIX</span>
+          </div>
+          <h3 data-i18n="story.card2_title" class="font-bold text-white text-base">Magic Butler Cleans Up Toys (1-Click Auto-Fix)</h3>
+          <p data-i18n="story.card2_desc" class="text-xs text-slate-400 leading-relaxed">
+            Rules duplicated or broken by software updates? Hit the big green [Auto-Fix All] button. The butler sweeps away conflicts and bumps your health score straight to A+!
+          </p>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="bg-dark-900 border border-dark-800 hover:border-brand-500/40 rounded-2xl p-6 space-y-3.5 shadow-sm hover:shadow-lg transition">
+          <div class="flex items-center justify-between">
+            <span class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-xl">🎁</span>
+            <span data-i18n="story.card3_tag" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-dark-800 text-cyan-300 border border-dark-700 uppercase">STEP 3: SUPERMARKET</span>
+          </div>
+          <h3 data-i18n="story.card3_title" class="font-bold text-white text-base">Explore the Free Skill Store (Search &amp; 1-Click Install)</h3>
+          <p data-i18n="story.card3_desc" class="text-xs text-slate-400 leading-relaxed">
+            Need an Excel formula builder, weekly report polisher, or reading summarizer? Search the community catalog and install world-class skills in one click for free!
+          </p>
+        </div>
+
+        <!-- Story 4 -->
+        <div class="bg-dark-900 border border-dark-800 hover:border-brand-500/40 rounded-2xl p-6 space-y-3.5 shadow-sm hover:shadow-lg transition">
+          <div class="flex items-center justify-between">
+            <span class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-xl">🏰</span>
+            <span data-i18n="story.card4_tag" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-dark-800 text-indigo-300 border border-dark-700 uppercase">STEP 4: PRIVATE CASTLE</span>
+          </div>
+          <h3 data-i18n="story.card4_title" class="font-bold text-white text-base">Locked in Your Castle (100% Local &amp; Zero Maintenance)</h3>
+          <p data-i18n="story.card4_desc" class="text-xs text-slate-400 leading-relaxed">
+            Everything stays 100% inside your own machine. Runs flawlessly even with the Wi-Fi unplugged. Never uploaded to external servers—safer than a bank vault!
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sponsor Banner / AdSense Slot -->
+    <div class="p-4 rounded-xl bg-dark-900 border border-dark-800 flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
+      <div class="flex items-center space-x-3">
+        <span data-i18n="sponsor.tag" class="px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 font-mono text-[10px]">SPONSORED</span>
+        <span data-i18n="sponsor.text" class="text-slate-300">Deploy high-performance AI coding test sandboxes on Vultr with $100 free developer credits.</span>
+      </div>
+      <a href="https://www.vultr.com/?ref=9825633" target="_blank" rel="sponsored noopener" data-i18n="sponsor.link" class="text-brand-400 hover:underline font-semibold whitespace-nowrap">
+        Claim $100 Credits →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Modal: Meta-Router Prompt -->
+  <div id="modal-router" class="fixed inset-0 z-50 bg-dark-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-dark-900 border border-dark-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+      
+      <div class="flex items-center justify-between border-b border-dark-800 pb-3">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="clipboard-list" class="w-5 h-5 text-brand-400"></i>
+          <h3 data-i18n="modal.router_title" class="font-bold text-white text-sm">Master Meta-Router System Prompt</h3>
+        </div>
+        <button onclick="closeRouterModal()" class="text-slate-400 hover:text-white text-lg">&times;</button>
+      </div>
+
+      <p data-i18n="modal.router_sub" class="text-xs text-slate-400 leading-relaxed">
+        Zero-friction guide: Copy this single system prompt and paste it into your project's .cursorrules, AGENTS.md, or Claude System Prompt. Your AI model will intelligently load the right skills on-demand!
+      </p>
+
+      <div class="relative">
+        <textarea id="router-prompt-content" readonly class="w-full h-72 p-3.5 bg-dark-950 rounded-xl text-xs font-mono text-slate-300 border border-dark-800 focus:outline-none resize-none leading-relaxed selection:bg-brand-600"></textarea>
+      </div>
+
+      <div class="flex items-center justify-end space-x-3 pt-2">
+        <button onclick="closeRouterModal()" data-i18n="modal.btn_close" class="px-3.5 py-1.5 text-xs text-slate-400 hover:text-white transition">Close</button>
+        <button id="btn-copy-router" onclick="copyRouterPrompt()" class="px-4 py-1.5 text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white rounded-lg transition shadow flex items-center space-x-1.5">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          <span id="copy-router-label" data-i18n="modal.btn_copy_router">Copy Master Router Prompt</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal: Doctor Findings -->
+  <div id="modal-doctor" class="fixed inset-0 z-50 bg-dark-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-dark-900 border border-dark-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85vh] flex flex-col">
+      
+      <div class="flex items-center justify-between border-b border-dark-800 pb-3">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="activity" class="w-5 h-5 text-brand-400"></i>
+          <h3 data-i18n="modal.doctor_title" class="font-bold text-white text-sm">Skill Health &amp; Conflict Diagnosis Report</h3>
+        </div>
+        <button onclick="closeDoctorModal()" class="text-slate-400 hover:text-white text-lg">&times;</button>
+      </div>
+
+      <div id="doctor-issues-list" class="space-y-3 overflow-y-auto flex-grow pr-1"></div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-dark-800">
+        <button onclick="triggerAutoFix()" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center space-x-1 shadow">
+          <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+          <span data-i18n="workbench.btn_autofix">Auto-Fix All (One-Click)</span>
+        </button>
+        <button onclick="closeDoctorModal()" data-i18n="modal.btn_close" class="px-4 py-1.5 text-xs font-semibold bg-dark-800 hover:bg-dark-700 text-white rounded-lg transition">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-800/80 py-8 text-center text-xs text-slate-400 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <img src="/favicon.svg" alt="OhMySkills" class="w-5 h-5">
+        <span class="font-bold text-white">OhMySkills</span>
+        <span data-i18n="footer.rights">• Private AI Skill Hub • 100% Local Execution</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="#download" data-i18n="footer.cli" class="hover:text-white transition">Local CLI</a>
+        <a href="/changelog/" data-i18n="footer.changelog" class="hover:text-white transition">Changelog</a>
+        <a href="/sitemap.xml" data-i18n="footer.sitemap" class="hover:text-white transition">Sitemap</a>
+        <a href="https://github.com/aquarkgn/ohmyskills" target="_blank" data-i18n="footer.github" class="hover:text-white transition">GitHub Open Source</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="editors.js"></script>
+  <script src="samples.js"></script>
+  <script src="registries.js"></script>
+  <script src="presets.js"></script>
+  <script src="changelog.js"></script>
+  <script src="parser.js"></script>
+  <script src="doctor.js"></script>
+  <script src="router.js"></script>
+
+  <script>
+    // State
+    let currentSkills = [];
+    let currentDoctorResult = null;
+    let selectedDomain = 'All';
+    let searchQuery = '';
+    let registrySearchQuery = '';
+    let selectedRegistrySource = 'all';
+
+    const RECENT_STORAGE_KEY = 'ohmyskills_recent_v1';
+
+    function getRecentSkillIds() {
+      try {
+        const raw = localStorage.getItem(RECENT_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : ['office-excel-wizard', 'office-weekly-report-pro'];
+      } catch (e) {
+        return ['office-excel-wizard', 'office-weekly-report-pro'];
+      }
+    }
+
+    function recordRecentSkill(skillId) {
+      try {
+        let list = getRecentSkillIds();
+        list = [skillId, ...list.filter(id => id !== skillId)].slice(0, 5);
+        localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(list));
+        renderRecentSkillsBar();
+      } catch (e) {}
+    }
+
+    function clearRecentSkills() {
+      localStorage.removeItem(RECENT_STORAGE_KEY);
+      renderRecentSkillsBar();
+    }
+
+    function renderRecentSkillsBar() {
+      const container = document.getElementById('recent-pills');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const recentIds = getRecentSkillIds();
+      if (!recentIds || recentIds.length === 0) {
+        container.innerHTML = `<span class="text-slate-500 text-[11px]">${I18n.t('workbench.recent_empty')}</span>`;
+        return;
+      }
+
+      recentIds.forEach(id => {
+        const skill = currentSkills.find(s => s.id === id) || DEMO_SKILLS.find(s => s.id === id);
+        if (!skill) return;
+        const pill = document.createElement('button');
+        pill.className = "px-2.5 py-0.5 rounded-lg bg-dark-800 hover:bg-brand-600/30 text-brand-300 hover:text-white border border-dark-700 text-[11px] font-medium transition flex items-center space-x-1";
+        pill.innerHTML = `<span>★ ${skill.name}</span>`;
+        pill.onclick = () => {
+          copySinglePrompt(skill.id);
+        };
+        container.appendChild(pill);
+      });
+    }
+
+    async function copyInstallCommand() {
+      const text = document.getElementById('install-command-text').textContent;
+      await navigator.clipboard.writeText(text);
+      const icon = document.getElementById('copy-install-icon');
+      const label = document.getElementById('copy-install-label');
+      if (icon) icon.setAttribute('data-lucide', 'check');
+      if (label) label.textContent = I18n.t('hero.copied');
+      if (window.lucide) lucide.createIcons();
+      setTimeout(() => {
+        if (icon) icon.setAttribute('data-lucide', 'copy');
+        if (label) label.textContent = I18n.t('hero.copy');
+        if (window.lucide) lucide.createIcons();
+      }, 2000);
+    }
+
+    // Initialize on DOM load
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize i18n (defaults strictly to English)
+      I18n.init();
+
+      // 2. Initialize UI components
+      initHeroEditorBadges();
+      renderPublicRegistries();
+      renderRecentSkillsBar();
+
+      // Check URL parameters for ?import=xxx
+      const params = new URLSearchParams(window.location.search);
+      const importId = params.get('import');
+      if (importId) {
+        const found = DEMO_SKILLS.find(s => s.id === importId || s.name === importId);
+        if (found) {
+          if (!found.tokenCount && found.content) {
+            found.tokenCount = Parser.estimateTokens(found.content);
+          }
+          setSkills([found]);
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+
+    function initHeroEditorBadges() {
+      const container = document.getElementById('hero-editors-bar');
+      if (!container) return;
+      container.innerHTML = '';
+
+      Object.values(EDITORS_REGISTRY).forEach(ed => {
+        const badge = document.createElement('div');
+        badge.className = "px-3 py-1.5 rounded-xl bg-dark-900 border border-dark-800 text-slate-300 flex items-center space-x-2 text-xs shadow-sm";
+        badge.innerHTML = `<span>${ed.logoSvg}</span><span class="font-medium">${ed.name}</span>`;
+        container.appendChild(badge);
+      });
+    }
+
+    // Public Registries
+    function renderPublicRegistries() {
+      const pillsContainer = document.getElementById('registry-source-pills');
+      if (pillsContainer) {
+        pillsContainer.innerHTML = '';
+        PUBLIC_REGISTRIES.forEach(reg => {
+          const btn = document.createElement('button');
+          const isAct = selectedRegistrySource === reg.id;
+          btn.className = `px-3 py-1 rounded-lg text-xs font-medium transition ${isAct ? 'bg-brand-600 text-white' : 'bg-dark-900 text-slate-400 hover:text-white border border-dark-800'}`;
+          btn.innerHTML = `<span>${reg.icon}</span> <span>${reg.name}</span>`;
+          btn.onclick = () => {
+            selectedRegistrySource = reg.id;
+            renderPublicRegistries();
+          };
+          pillsContainer.appendChild(btn);
+        });
+      }
+
+      const grid = document.getElementById('registry-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const results = RegistryScanner.search(registrySearchQuery, selectedRegistrySource, 'all');
+
+      if (results.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-8 text-center text-slate-500 text-xs">${I18n.t('registries.empty')} "${registrySearchQuery}".</div>`;
+        return;
+      }
+
+      results.forEach(sk => {
+        const card = document.createElement('div');
+        card.className = "bg-dark-900 border border-dark-800 hover:border-dark-700 rounded-xl p-4 flex flex-col justify-between space-y-3 shadow-sm";
+        
+        const remoteLogo = sk.iconUrl 
+          ? `<img src="${sk.iconUrl}" alt="${sk.name}" class="w-4 h-4 object-contain">`
+          : `<i data-lucide="code" class="w-4 h-4 text-brand-400"></i>`;
+
+        card.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between text-[11px] font-mono">
+              <span class="px-2 py-0.5 rounded bg-dark-800 text-brand-300 border border-dark-700">${sk.source}</span>
+              <span class="text-slate-400">★ ${sk.stars}</span>
+            </div>
+            
+            <div class="flex items-center space-x-2.5">
+              <div class="w-8 h-8 rounded-lg bg-dark-950 border border-dark-700 flex items-center justify-center p-1.5 flex-shrink-0">
+                ${remoteLogo}
+              </div>
+              <h3 class="font-bold text-white text-sm truncate">${sk.title}</h3>
+            </div>
+
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${sk.description}</p>
+            <div class="flex flex-wrap gap-1">
+              ${sk.tags.map(t => `<span class="text-[10px] font-mono text-slate-500 bg-dark-950 px-1.5 py-0.5 rounded">${t}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-dark-800/80 flex items-center justify-between text-xs">
+            <span class="text-[11px] font-mono text-slate-400">by @${sk.author}</span>
+            <button onclick="importRegistrySkill('${sk.id}')" class="px-2.5 py-1 rounded-lg bg-brand-600/20 hover:bg-brand-600 text-brand-300 hover:text-white transition font-medium flex items-center space-x-1">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>${I18n.t('registries.btn_import')}</span>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    function handleRegistrySearch(q) {
+      registrySearchQuery = q;
+      renderPublicRegistries();
+    }
+
+    function importRegistrySkill(skillId) {
+      const match = CURATED_REGISTRY_SKILLS.find(s => s.id === skillId);
+      if (!match) return;
+
+      const parsed = Parser.parseFile(match.name + '.mdc', match.content, match.name + '.mdc');
+      if (match.iconUrl) parsed.iconUrl = match.iconUrl;
+      currentSkills.unshift(parsed);
+      setSkills(currentSkills);
+      recordRecentSkill(parsed.id);
+      document.getElementById('workbench').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Drag & Drop
+    const dropZone = document.getElementById('drop-zone');
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.add('border-brand-500', 'bg-dark-850');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('border-brand-500', 'bg-dark-850');
+      }, false);
+    });
+
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    async function handleDrop(e) {
+      const items = e.dataTransfer.items;
+      const files = [];
+
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i].webkitGetAsEntry ? items[i].webkitGetAsEntry() : null;
+          if (item) {
+            await scanEntry(item, files);
+          }
+        }
+      } else {
+        for (let i = 0; i < e.dataTransfer.files.length; i++) {
+          files.push(e.dataTransfer.files[i]);
+        }
+      }
+
+      processFiles(files);
+    }
+
+    async function scanEntry(entry, fileList) {
+      if (entry.isFile) {
+        if (entry.name.endsWith('.md') || entry.name.endsWith('.mdc') || entry.name === '.cursorrules' || entry.name.endsWith('.txt')) {
+          const file = await new Promise(resolve => entry.file(resolve));
+          fileList.push(file);
+        }
+      } else if (entry.isDirectory) {
+        if (entry.name === 'node_modules' || entry.name === '.git') return;
+        const reader = entry.createReader();
+        const entries = await new Promise(resolve => reader.readEntries(resolve));
+        for (let child of entries) {
+          await scanEntry(child, fileList);
+        }
+      }
+    }
+
+    function handleFileInput(e) {
+      const files = Array.from(e.target.files);
+      processFiles(files);
+    }
+
+    async function processFiles(files) {
+      if (!files || files.length === 0) return;
+
+      const parsed = [];
+      for (let file of files) {
+        const text = await file.text();
+        const skill = Parser.parseFile(file.name, text, file.webkitRelativePath || file.name);
+        parsed.push(skill);
+      }
+
+      setSkills(parsed);
+    }
+
+    function loadDemoSkills() {
+      DEMO_SKILLS.forEach(s => {
+        if (!s.tokenCount && s.content) {
+          s.tokenCount = Parser.estimateTokens(s.content);
+        }
+      });
+      setSkills(DEMO_SKILLS);
+    }
+
+    function triggerAutoFix() {
+      if (!currentSkills.length) return;
+      const { fixedCount, skills } = Doctor.autoFix(currentSkills);
+      setSkills(skills);
+      closeDoctorModal();
+      alert(I18n.t('alert.autofix_success', {
+        count: fixedCount,
+        grade: currentDoctorResult.grade,
+        score: currentDoctorResult.score
+      }));
+    }
+
+    function saveCurrentAsPreset() {
+      if (!currentSkills.length) {
+        alert("Please load or drop skills first.");
+        return;
+      }
+      const name = prompt(I18n.t('alert.enter_preset_name'), `Workspace Stack (${currentSkills.length} rules)`);
+      if (!name) return;
+
+      PresetsManager.savePreset(name, currentSkills);
+      alert(I18n.t('alert.saved_preset', { name }));
+    }
+
+    function setSkills(skills) {
+      currentSkills = skills;
+      currentDoctorResult = Doctor.diagnose(skills);
+
+      document.getElementById('stat-score').textContent = currentDoctorResult.score;
+      const gradeEl = document.getElementById('stat-grade');
+      const isZh = I18n.getLang() === 'zh';
+      gradeEl.textContent = (isZh ? '评级 ' : 'Grade ') + currentDoctorResult.grade;
+      gradeEl.className = `text-xs font-mono font-bold px-2 py-0.5 rounded bg-${currentDoctorResult.gradeColor}-500/20 text-${currentDoctorResult.gradeColor}-400 border border-${currentDoctorResult.gradeColor}-500/30`;
+
+      document.getElementById('stat-skills-count-sub').textContent = `${currentSkills.length} ${I18n.t('workbench.hud_rules_loaded')}`;
+      document.getElementById('stat-total-tokens').textContent = currentDoctorResult.totalTokens.toLocaleString();
+      document.getElementById('stat-always-sub').textContent = `${currentDoctorResult.alwaysApplyTokens.toLocaleString()} ${I18n.t('workbench.hud_always_tokens')}`;
+      document.getElementById('stat-savings-pct').textContent = '~' + Math.max(75, currentDoctorResult.savingsPercent) + '%';
+      document.getElementById('stat-savings-sub-text').textContent = I18n.t('workbench.hud_savings_sub', {
+        tokens: currentDoctorResult.potentialTokenSavings.toLocaleString()
+      });
+
+      document.getElementById('stat-errors').textContent = currentDoctorResult.errorsCount + (isZh ? ' 处错误' : ' Errors');
+      document.getElementById('stat-warnings').textContent = currentDoctorResult.warningsCount + (isZh ? ' 处警告' : ' Warnings');
+
+      renderDomainFilters();
+      renderRecentSkillsBar();
+      document.getElementById('workbench-section').classList.remove('hidden');
+      renderSkillsGrid();
+
+      document.getElementById('workbench-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderDomainFilters() {
+      // Put Office and Study in front
+      const priorityOrder = ['Office', 'Study', 'Frontend', 'Backend', 'DevOps', 'Security', 'Workflow'];
+      const presentDomains = new Set(currentSkills.map(s => s.domain).filter(Boolean));
+      const sortedPresent = priorityOrder.filter(d => presentDomains.has(d));
+      presentDomains.forEach(d => {
+        if (!sortedPresent.includes(d)) sortedPresent.push(d);
+      });
+
+      const domains = ['All', ...sortedPresent];
+      const container = document.getElementById('domain-filters');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const isZh = I18n.getLang() === 'zh';
+
+      domains.forEach(d => {
+        const btn = document.createElement('button');
+        const count = d === 'All' ? currentSkills.length : currentSkills.filter(s => s.domain === d).length;
+        const isActive = selectedDomain === d;
+
+        btn.className = `px-2.5 py-1 rounded-lg text-xs font-medium transition ${
+          isActive 
+            ? 'bg-brand-600 text-white shadow-sm' 
+            : 'bg-dark-950 text-slate-400 hover:text-white border border-dark-800'
+        }`;
+        
+        let label = d;
+        if (d === 'All') label = isZh ? '全部' : 'All';
+        else if (d === 'Office') label = isZh ? '📚 办公与表格' : 'Office & Excel';
+        else if (d === 'Study') label = isZh ? '🎓 学习与笔记' : 'Study & Notes';
+        else if (d === 'Frontend') label = isZh ? '🎨 前端开发' : 'Frontend';
+        else if (d === 'Backend') label = isZh ? '⚙️ 后端服务' : 'Backend';
+        else if (d === 'DevOps') label = isZh ? '🐳 容器运维' : 'DevOps';
+        else if (d === 'Security') label = isZh ? '🛡️ 安全防御' : 'Security';
+        else if (d === 'Workflow') label = isZh ? '⚡ 流程规范' : 'Workflow';
+
+        btn.textContent = `${label} (${count})`;
+        btn.onclick = () => {
+          selectedDomain = d;
+          renderDomainFilters();
+          renderSkillsGrid();
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function handleSearch(q) {
+      searchQuery = q.toLowerCase().trim();
+      renderSkillsGrid();
+    }
+
+    function renderSkillsGrid(customList = null) {
+      const grid = document.getElementById('skills-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const listToRender = customList || currentSkills;
+
+      const filtered = listToRender.filter(s => {
+        const matchesDomain = selectedDomain === 'All' || s.domain === selectedDomain;
+        const matchesSearch = !searchQuery || 
+          s.name.toLowerCase().includes(searchQuery) || 
+          (s.description || '').toLowerCase().includes(searchQuery) ||
+          (s.tags || []).some(t => t.toLowerCase().includes(searchQuery)) ||
+          (s.triggers || []).some(tr => tr.toLowerCase().includes(searchQuery));
+        return matchesDomain && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-500">
+            <p class="text-sm">${I18n.t('workbench.empty_filter')}</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(skill => {
+        const card = document.createElement('div');
+        card.className = "bg-dark-900 border border-dark-800 hover:border-dark-700 rounded-xl p-4 flex flex-col justify-between space-y-3 shadow-sm hover:shadow-md transition";
+        
+        const triggerTag = (skill.triggers && skill.triggers[0]) 
+          ? `<p class="text-[11px] font-mono text-brand-300 bg-brand-500/10 px-2 py-1 rounded border border-brand-500/20 truncate">💬 ${I18n.t('workbench.trigger_prefix')} "${skill.triggers[0]}"</p>`
+          : '';
+
+        const ed = detectEditorForPath(skill.path, skill.filename);
+        const editorLogo = ed ? ed.logoSvg : '⚡';
+        const techLogo = skill.iconUrl 
+          ? `<img src="${skill.iconUrl}" alt="${skill.name}" class="w-3.5 h-3.5 object-contain">`
+          : '';
+
+        card.innerHTML = `
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-dark-800 text-slate-300 border border-dark-700 flex items-center space-x-1.5">
+                ${techLogo}
+                <span>${editorLogo}</span>
+                <span>${skill.domain}</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-400">~${skill.tokenCount || 0} tokens</span>
+            </div>
+            
+            <h3 class="font-bold text-white text-sm tracking-tight truncate">${skill.name}</h3>
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${skill.description || 'No description provided'}</p>
+            
+            ${triggerTag}
+          </div>
+
+          <div class="pt-3 border-t border-dark-800/80 flex items-center justify-between text-xs">
+            <span class="text-[11px] font-mono text-slate-400 truncate max-w-[120px]">${skill.filename}</span>
+            <div class="flex items-center space-x-2">
+              <button onclick="copySinglePrompt('${skill.id}')" class="text-brand-400 hover:text-brand-300 font-semibold transition">
+                ${I18n.t('workbench.copy_prompt')}
+              </button>
+              <button onclick="removeSkill('${skill.id}')" class="text-slate-500 hover:text-rose-400 transition">
+                ✕
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    function removeSkill(id) {
+      currentSkills = currentSkills.filter(s => s.id !== id);
+      setSkills(currentSkills);
+    }
+
+    function copySinglePrompt(skillId) {
+      const skill = currentSkills.find(s => s.id === skillId) || DEMO_SKILLS.find(s => s.id === skillId);
+      if (!skill) return;
+      navigator.clipboard.writeText(skill.content || skill.rawContent || skill.body || '');
+      recordRecentSkill(skill.id);
+      alert(I18n.t('alert.prompt_copied', { name: skill.name }));
+    }
+
+    function openRouterModal() {
+      const prompt = Router.compileRouterPrompt(currentSkills);
+      document.getElementById('router-prompt-content').value = prompt;
+      document.getElementById('modal-router').classList.remove('hidden');
+    }
+
+    function closeRouterModal() {
+      document.getElementById('modal-router').classList.add('hidden');
+    }
+
+    async function copyRouterPrompt() {
+      const text = document.getElementById('router-prompt-content').value;
+      await navigator.clipboard.writeText(text);
+      const label = document.getElementById('copy-router-label');
+      label.textContent = I18n.t('modal.btn_copied_router');
+      setTimeout(() => label.textContent = I18n.t('modal.btn_copy_router'), 2000);
+    }
+
+    function openDoctorModal() {
+      if (!currentDoctorResult) return;
+      const container = document.getElementById('doctor-issues-list');
+      container.innerHTML = '';
+
+      const isZh = I18n.getLang() === 'zh';
+
+      if (currentDoctorResult.issues.length === 0) {
+        container.innerHTML = `<p class="text-xs text-emerald-400">${I18n.t('modal.doctor_empty')}</p>`;
+      } else {
+        currentDoctorResult.issues.forEach(issue => {
+          const div = document.createElement('div');
+          const isErr = issue.level === 'error';
+          const isWarn = issue.level === 'warning';
+          const badgeClass = isErr ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' : (isWarn ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' : 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30');
+
+          const msg = isZh && issue.messageZh ? issue.messageZh : issue.message;
+          const fix = isZh && issue.fixZh ? issue.fixZh : issue.fix;
+
+          div.className = "p-3 rounded-xl bg-dark-950 border border-dark-800 space-y-1.5 text-xs";
+          div.innerHTML = `
+            <div class="flex items-center space-x-2">
+              <span class="font-mono text-[10px] px-1.5 py-0.5 rounded border ${badgeClass}">${issue.code}</span>
+              <span class="font-semibold text-slate-200">${issue.skillName}</span>
+            </div>
+            <p class="text-slate-400 leading-relaxed">${msg}</p>
+            <p class="text-[11px] text-brand-300 font-medium">${I18n.t('modal.doctor_fix_label')} ${fix}</p>
+          `;
+          container.appendChild(div);
+        });
+      }
+
+      document.getElementById('modal-doctor').classList.remove('hidden');
+    }
+
+    function closeDoctorModal() {
+      document.getElementById('modal-doctor').classList.add('hidden');
+    }
+
+    function exportStandaloneHtml() {
+      if (!currentSkills.length) return;
+      const htmlContent = Router.generateStandaloneHtml(currentSkills, currentDoctorResult);
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ohmyskills-catalog.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    async function exportZipBundle() {
+      if (!currentSkills.length || typeof JSZip === 'undefined') return;
+      const zip = new JSZip();
+      const rulesFolder = zip.folder(".cursor/rules");
+
+      currentSkills.forEach(s => {
+        const filename = s.filename.endsWith('.mdc') ? s.filename : (s.name + '.mdc');
+        const content = s.content || s.rawContent || s.body;
+        rulesFolder.file(filename, content);
+      });
+
+      const routerPrompt = Router.compileRouterPrompt(currentSkills);
+      rulesFolder.file("00-meta-router.mdc", routerPrompt);
+
+      const content = await zip.generateAsync({ type: "blob" });
+      const url = URL.createObjectURL(content);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ohmyskills-bundle.zip';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function resetWorkbench() {
+      currentSkills = [];
+      currentDoctorResult = null;
+      document.getElementById('workbench-section').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const search = document.getElementById('search-input');
+        if (search) search.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>

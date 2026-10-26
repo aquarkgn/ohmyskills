@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind CSS v4 Modern Cursor Rules (.mdc) | OhMySkills</title>
+  <meta name="description" content="Production-ready Cursor .mdc rules for Tailwind CSS v4 CSS-first configuration, @theme variables, and container queries.">
+  <meta name="keywords" content="tailwind v4 cursor rules, tailwind mdc, tailwindcss v4 ai prompt, modern css rules">
+  <link rel="canonical" href="https://ohmyskills.dev/rules/tailwind-v4/">
+
+  <!-- Remote Favicons & Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Tailwind CSS v4 Modern Cursor Rules (.mdc)">
+  <meta property="og:description" content="Production-ready Cursor .mdc rules for Tailwind CSS v4 CSS-first configuration, @theme variables, and container queries.">
+  <meta property="og:url" content="https://ohmyskills.dev/rules/tailwind-v4/">
+  <meta property="og:image" content="https://ohmyskills.dev/logo.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OhMySkills">
+
+  <!-- Tailwind CSS & Lucide Icons CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+            dark: { 950: '#06080e', 900: '#0c101a', 850: '#111726', 800: '#192237', 700: '#263352' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-dark-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-dark-800 bg-dark-950/80 backdrop-blur-md sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2.5">
+        <img src="/favicon.svg" alt="OhMySkills Logo" class="w-8 h-8 rounded-lg shadow">
+        <span class="font-bold text-white text-base">OhMySkills</span>
+      </a>
+
+      <div class="flex items-center space-x-3 text-xs">
+        <a href="/changelog/" class="text-slate-400 hover:text-white transition">Changelog</a>
+        <a href="/?import=tailwind-v4-modern" class="px-3.5 py-1.5 font-semibold rounded-lg bg-brand-600 hover:bg-brand-500 text-white transition shadow flex items-center space-x-1.5">
+          <i data-lucide="play" class="w-3.5 h-3.5"></i>
+          <span>Open in Workbench</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Article -->
+  <main class="max-w-4xl mx-auto px-4 py-8 flex-grow space-y-8">
+    
+    <!-- Breadcrumb -->
+    <nav class="flex items-center space-x-2 text-xs text-slate-500 font-mono">
+      <a href="/" class="hover:text-slate-300">Home</a>
+      <span>/</span>
+      <span class="text-slate-400">Rules</span>
+      <span>/</span>
+      <span class="text-brand-400 font-semibold">tailwind-v4</span>
+    </nav>
+
+    <!-- Heading with Remote Tech Stack Icon -->
+    <header class="space-y-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-12 h-12 rounded-xl bg-dark-900 border border-dark-700 flex items-center justify-center p-2.5 shadow-md">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="tailwind-v4 logo" class="w-full h-full object-contain">
+        </div>
+        <div>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-500/20 text-brand-300 uppercase font-semibold">Verified Cursor .mdc &amp; Agent Skill</span>
+          <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">Tailwind CSS v4 Engineering Rules (.mdc)</h1>
+        </div>
+      </div>
+      <p class="text-sm text-slate-400 leading-relaxed">Production-ready Cursor .mdc rules for Tailwind CSS v4 CSS-first configuration, @theme variables, and container queries.</p>
+    </header>
+
+    <!-- Native Sponsor / Ad Slot -->
+    <div class="p-4 rounded-xl bg-dark-900 border border-dark-800 flex items-center justify-between text-xs">
+      <div class="flex items-center space-x-3">
+        <span class="px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 font-mono text-[10px]">SPONSORED</span>
+        <span class="text-slate-300">Deploy high-performance AI coding sandboxes on Vultr with $100 free credit.</span>
+      </div>
+      <a href="https://www.vultr.com/?ref=9825633" target="_blank" rel="sponsored noopener" class="text-brand-400 hover:underline font-semibold ml-2 whitespace-nowrap">
+        Claim $100 Credit &rarr;
+      </a>
+    </div>
+
+    <!-- Rule Code Block with One-Click Copy -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-mono text-slate-400 font-semibold uppercase tracking-wider">Rule Specification (.cursor/rules/tailwind-v4-modern.mdc)</span>
+        <button id="btn-copy" onclick="copyRule()" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-brand-600 hover:bg-brand-500 text-white transition flex items-center space-x-1.5 shadow">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          <span id="copy-label">Copy Rule to Clipboard</span>
+        </button>
+      </div>
+
+      <div class="relative bg-dark-900 border border-dark-800 rounded-xl overflow-hidden shadow-xl">
+        <pre class="p-4 text-xs font-mono text-slate-300 overflow-x-auto max-h-[500px] leading-relaxed selection:bg-brand-600">---
+description: Tailwind CSS v4 CSS-first configuration and modern utilities
+globs: **/*.css, **/*.tsx, **/*.vue
+alwaysApply: false
+---
+# Tailwind CSS v4 Engineering Rules
+
+1. Use `@theme` block in CSS instead of `tailwind.config.js` for custom design tokens.
+2. Rely on native CSS color variables (`oklch` / `color-mix`) for dark-mode transitions.
+3. Leverage `@container` queries for modular responsive cards instead of global viewport breakpoints where possible.
+4. Avoid redundant utility chaining; extract reusable UI primitives into shared component wrappers.</pre>
+      </div>
+    </section>
+
+    <!-- Key Anti-Patterns to Avoid -->
+    <section class="space-y-3 pt-2">
+      <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+        <i data-lucide="shield-alert" class="w-5 h-5 text-rose-400"></i>
+        <span>Common Anti-Patterns Avoided</span>
+      </h2>
+      <ul class="space-y-2">
+        
+          <li class="flex items-start space-x-2 text-xs text-slate-400">
+            <span class="text-rose-400 font-bold">✕</span>
+            <span>Configuring theme tokens in legacy tailwind.config.js</span>
+          </li>
+        
+          <li class="flex items-start space-x-2 text-xs text-slate-400">
+            <span class="text-rose-400 font-bold">✕</span>
+            <span>Arbitrary utility chaining without reusable UI wrappers</span>
+          </li>
+        
+          <li class="flex items-start space-x-2 text-xs text-slate-400">
+            <span class="text-rose-400 font-bold">✕</span>
+            <span>Using outdated opacity modifiers instead of native oklch color-mix</span>
+          </li>
+        
+      </ul>
+    </section>
+
+    <!-- Related Rules with Remote Logos -->
+    <section class="border-t border-dark-800 pt-6 space-y-4">
+      <h3 class="text-sm font-bold text-slate-200">Explore Related Tech Stack Rules</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        
+          <a href="/rules/nextjs-15/" class="p-3 rounded-lg bg-dark-900 border border-dark-800 hover:border-dark-700 transition flex items-center space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-dark-950 border border-dark-700 flex items-center justify-center p-1.5 flex-shrink-0">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="nextjs-15" class="w-full h-full object-contain">
+            </div>
+            <div class="truncate">
+              <h4 class="text-xs font-bold text-white group-hover:text-brand-300 truncate transition">Next.js 15 &amp; React 19 Best Practice Cursor Rules (.mdc)</h4>
+              <p class="text-[11px] text-slate-400 line-clamp-1">Official community Cursor rules (.mdc) and Claude Skills for Next.js 15 App Router, React 19 Server Actions, and async cookies/headers.</p>
+            </div>
+          </a>
+        
+          <a href="/rules/postgres-migration/" class="p-3 rounded-lg bg-dark-900 border border-dark-800 hover:border-dark-700 transition flex items-center space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-dark-950 border border-dark-700 flex items-center justify-center p-1.5 flex-shrink-0">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="postgres-migration" class="w-full h-full object-contain">
+            </div>
+            <div class="truncate">
+              <h4 class="text-xs font-bold text-white group-hover:text-brand-300 truncate transition">Zero-Downtime PostgreSQL Schema Migration Rules</h4>
+              <p class="text-[11px] text-slate-400 line-clamp-1">Safe database migration prompts for AI agents. Non-blocking index creation, lock timeouts, and zero-downtime schema evolution.</p>
+            </div>
+          </a>
+        
+          <a href="/rules/docker-hardening/" class="p-3 rounded-lg bg-dark-900 border border-dark-800 hover:border-dark-700 transition flex items-center space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-dark-950 border border-dark-700 flex items-center justify-center p-1.5 flex-shrink-0">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="docker-hardening" class="w-full h-full object-contain">
+            </div>
+            <div class="truncate">
+              <h4 class="text-xs font-bold text-white group-hover:text-brand-300 truncate transition">Production Dockerfile Hardening &amp; Security Rules</h4>
+              <p class="text-[11px] text-slate-400 line-clamp-1">Comprehensive AI prompt rules for multi-stage minimal Docker builds, non-root user execution, and secure secret mounting.</p>
+            </div>
+          </a>
+        
+          <a href="/rules/go-error-handling/" class="p-3 rounded-lg bg-dark-900 border border-dark-800 hover:border-dark-700 transition flex items-center space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-dark-950 border border-dark-700 flex items-center justify-center p-1.5 flex-shrink-0">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="go-error-handling" class="w-full h-full object-contain">
+            </div>
+            <div class="truncate">
+              <h4 class="text-xs font-bold text-white group-hover:text-brand-300 truncate transition">Idiomatic Go 1.22+ Error Handling Cursor Rules</h4>
+              <p class="text-[11px] text-slate-400 line-clamp-1">Structured Go error wrapping rules with errors.Is and errors.As. Clean code guidelines for AI coding assistants.</p>
+            </div>
+          </a>
+        
+      </div>
+    </section>
+
+    <!-- Workbench CTA -->
+    <div class="p-6 rounded-2xl bg-gradient-to-r from-brand-900/30 to-dark-900 border border-brand-500/30 text-center space-y-3">
+      <h3 class="font-bold text-white text-base">Want to audit and compile all your rules in one place?</h3>
+      <p class="text-xs text-slate-400 max-w-lg mx-auto">Use OhMySkills Workbench to drag-and-drop your .cursor/rules folder, check token bloat, and generate a dynamic on-demand router.</p>
+      <a href="/?import=tailwind-v4-modern" class="inline-flex items-center space-x-2 px-5 py-2.5 text-xs font-bold rounded-lg bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/20 transition">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>Launch Free Workbench &rarr;</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-800 py-6 text-center text-xs text-slate-400 bg-dark-950">
+    <p>OhMySkills • Open-Source Developer Workbench • Zero-Backend Client Side</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    async function copyRule() {
+      const code = "---\ndescription: Tailwind CSS v4 CSS-first configuration and modern utilities\nglobs: **/*.css, **/*.tsx, **/*.vue\nalwaysApply: false\n---\n# Tailwind CSS v4 Engineering Rules\n\n1. Use `@theme` block in CSS instead of `tailwind.config.js` for custom design tokens.\n2. Rely on native CSS color variables (`oklch` / `color-mix`) for dark-mode transitions.\n3. Leverage `@container` queries for modular responsive cards instead of global viewport breakpoints where possible.\n4. Avoid redundant utility chaining; extract reusable UI primitives into shared component wrappers.";
+      await navigator.clipboard.writeText(code);
+      const label = document.getElementById('copy-label');
+      label.textContent = 'Copied to Clipboard!';
+      setTimeout(() => label.textContent = 'Copy Rule to Clipboard', 2000);
+    }
+  </script>
+</body>
+</html>

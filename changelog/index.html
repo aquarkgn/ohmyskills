@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Rules & Framework Changelog | OhMySkills</title>
+  <meta name="description" content="Track breaking syntax changes, deprecations, and required AI rules across Next.js 15, React 19, Tailwind CSS v4, Python 3.12, and Docker.">
+  <link rel="canonical" href="https://ohmyskills.dev/changelog/">
+
+  <!-- Remote Favicons & Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5' },
+            dark: { 950: '#06080e', 900: '#0c101a', 800: '#192237', 700: '#263352' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-dark-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-white">
+  <header class="border-b border-dark-800 bg-dark-950/80 backdrop-blur-md sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2.5">
+        <img src="/favicon.svg" alt="OhMySkills Logo" class="w-8 h-8 rounded-lg shadow">
+        <span class="font-bold text-white text-base">OhMySkills</span>
+      </a>
+      <a href="/" class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-brand-600 hover:bg-brand-500 text-white flex items-center space-x-1.5 shadow">
+        <i data-lucide="play" class="w-3.5 h-3.5"></i>
+        <span>Open Workbench</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 flex-grow space-y-8">
+    <header class="space-y-2">
+      <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-medium">
+        <i data-lucide="history" class="w-3.5 h-3.5"></i>
+        <span>AI Framework Evolution</span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-white">AI Rules &amp; Framework Changelog</h1>
+      <p class="text-xs text-slate-400">Keep your AI coding assistant prompts updated with the latest breaking framework conventions.</p>
+    </header>
+
+    <div class="space-y-6">
+      
+        <article class="bg-dark-900 border border-dark-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-dark-800 pb-3">
+            <div>
+              <h2 class="text-base font-bold text-white">Next.js 15 &amp; React 19</h2>
+              <p class="text-xs text-slate-400 mt-0.5">Async Request APIs, elimination of synchronous cookies()/headers(), and React 19 Server Actions.</p>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30 font-semibold">Breaking Rules</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="space-y-2">
+              <p class="text-rose-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="x-circle" class="w-3.5 h-3.5 text-rose-400"></i>
+                <span>Outdated / Deprecated Rules</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Synchronous `const cookieStore = cookies()` (Now throws runtime promise error in Next 15)</span></li><li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Synchronous `params.id` in page/route handlers (Now requires `await params`)</span></li><li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Manual `isPending` state flags with custom useState for mutations</span></li>
+              </ul>
+            </div>
+            <div class="space-y-2">
+              <p class="text-emerald-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Required Modern Instructions</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Always `await cookies()` and `await headers()` before accessing properties</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Always `await params` in Server Components: `const { id } = await params;`</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Use `useActionState` and `useOptimistic` for native form transitions</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Omit `forwardRef` in React 19 — `ref` is passed directly as a standard prop</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      
+        <article class="bg-dark-900 border border-dark-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-dark-800 pb-3">
+            <div>
+              <h2 class="text-base font-bold text-white">Tailwind CSS v4</h2>
+              <p class="text-xs text-slate-400 mt-0.5">Full migration to CSS-first configuration, deprecating tailwind.config.js in favor of @theme directives.</p>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-500/20 text-teal-400 border border-teal-500/30 font-semibold">CSS-First Shift</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="space-y-2">
+              <p class="text-rose-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="x-circle" class="w-3.5 h-3.5 text-rose-400"></i>
+                <span>Outdated / Deprecated Rules</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Defining colors and breakpoints in `tailwind.config.js` (No longer parsed by default)</span></li><li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Using `@apply` inside arbitrary complex selector chains</span></li><li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Legacy opacity modifier syntaxes (`bg-opacity-50` replaced with `bg-black/50`)</span></li>
+              </ul>
+            </div>
+            <div class="space-y-2">
+              <p class="text-emerald-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Required Modern Instructions</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Define design tokens using `@theme { --color-primary: oklch(...); }` in CSS</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Use native CSS `@container` queries for modular responsive card layouts</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Leverage native cascade layers and `@utility` for custom utility creation</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      
+        <article class="bg-dark-900 border border-dark-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-dark-800 pb-3">
+            <div>
+              <h2 class="text-base font-bold text-white">Python 3.12+ &amp; Pydantic v2</h2>
+              <p class="text-xs text-slate-400 mt-0.5">Transition to native generic syntax, PEP 695 type parameter syntax, and Pydantic v2 Rust core.</p>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30 font-semibold">Type Safety</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="space-y-2">
+              <p class="text-rose-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="x-circle" class="w-3.5 h-3.5 text-rose-400"></i>
+                <span>Outdated / Deprecated Rules</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Importing `typing.List`, `typing.Dict`, `typing.Union` (Deprecated in favor of `list`, `dict`, `|`)</span></li><li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Pydantic v1 `class Config: orm_mode = True` (Replaced with `model_config = ConfigDict(...)`)</span></li><li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>`@validator` decorators (Replaced with `@field_validator` and `@model_validator`)</span></li>
+              </ul>
+            </div>
+            <div class="space-y-2">
+              <p class="text-emerald-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Required Modern Instructions</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Use pipe syntax for unions: `def query(id: int | str) -&gt; list[str]:`</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Enforce immutable domain models using `ConfigDict(frozen=True, strict=True)`</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Wrap validated parameters in `Annotated[..., Field(...)]` for rich metadata</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      
+        <article class="bg-dark-900 border border-dark-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-dark-800 pb-3">
+            <div>
+              <h2 class="text-base font-bold text-white">Docker Compose Specification</h2>
+              <p class="text-xs text-slate-400 mt-0.5">Formal deprecation of the top-level 'version:' attribute across modern Docker CLI / Compose v2.</p>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 font-semibold">Syntax Deprecation</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="space-y-2">
+              <p class="text-rose-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="x-circle" class="w-3.5 h-3.5 text-rose-400"></i>
+                <span>Outdated / Deprecated Rules</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Including `version: '3.8'` or `version: '3'` at the top of docker-compose.yml</span></li><li class="flex items-start space-x-1.5"><span class="text-rose-500">•</span><span>Using legacy `docker-compose` dash command (replaced by `docker compose` plugin)</span></li>
+              </ul>
+            </div>
+            <div class="space-y-2">
+              <p class="text-emerald-400 font-semibold flex items-center space-x-1">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Required Modern Instructions</span>
+              </p>
+              <ul class="space-y-1.5 text-slate-400">
+                <li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Start docker-compose.yml directly with `services:`</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Use Compose Specification features: `develop.watch`, `include:`, and `secrets:`</span></li><li class="flex items-start space-x-1.5"><span class="text-emerald-500">•</span><span>Always specify explicit restart policies: `restart: unless-stopped`</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      
+    </div>
+  </main>
+
+  <footer class="border-t border-dark-800 py-6 text-center text-xs text-slate-400 bg-dark-950">
+    <p>OhMySkills • Open-Source Developer Workbench</p>
+  </footer>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
